@@ -1,25 +1,23 @@
 # CentryOnboarding
 Files and documentation related to client onboarding
+
 ---
 
 ## Microsoft Sentinel workspace setup
 
-1. Deploy lighthouse using the templates and the script found in the [5Q templates](https://github.com/JakeD-5Q/Sentinel-Onboarding/tree/main/Azure%20Lighthouse/5Q%20Templates) directory.
+1. Deploy lighthouse using zip file and follow [instructions](https://github.com/5Q-SOCaaS/CentryOnboarding/blob/main/AzureLighthouse/README.md)
 
-2. Create a new resource group for the Sentinel workspace
-    - using naming convention:  rg-5q-sentinel
+2. Use the button below to accomplish the following tasks:
+     - [ ] Create a Sentinel resource group (**Naming convention:** RG-*ABR*-Sentinel)
+     - [ ] Create log analytics workspace (**Naming convention:** *ABR*-LogAnalytics-Sentinel)
+     - [ ] Add Sentinel to the Log analytics workspace
+    
+3. Now to Connect data sources, configure workspace, import analytics rules (Instructions below).
 
-3. Deploy log analytics in the resource group just created
-    - using naming convention: 5Q-LogAnalytics-Sentinel
-
-4. Add Sentinel to the Log analytics workspace
-    - using the search box or an ARM template
-
-5. Sentinel has now been successfully deployed! The next part will be to configure this workspace for SOCaaS use.
-
-All of these steps can be completed by using the button below. All variable values will be filled in using the Azure portal once the button has been clicked.
 
 [![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FTools%2FSentinel-All-In-One%2FARMTemplates%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FTools%2FSentinel-All-In-One%2FARMTemplates%2FcreateUiDefinition.json)
+
+*Must be signed into this Github account because this repository is currently set to private*
 
 ---
 
