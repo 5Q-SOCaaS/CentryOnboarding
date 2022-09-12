@@ -1,0 +1,312 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/80282f37-dea4-476d-a25c-10f3773cb786')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/80282f37-dea4-476d-a25c-10f3773cb786')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "displayName": "AppServices AV Scan Failure",
+                "description": "Identifies if an AV scan fails in Azure App Services.",
+                "severity": "Informational",
+                "enabled": true,
+                "query": "let timeframe = ago(1d);\nAppServiceAntivirusScanAuditLogs\n| where ScanStatus == \"Failed\"\n| extend HostCustomEntity = _ResourceId, timestamp = TimeGenerated",
+                "queryFrequency": "PT10M",
+                "queryPeriod": "PT30M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 1,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [],
+                "techniques": [],
+                "alertRuleTemplateName": "c2da1106-bfe4-4a63-bf14-5ab73130ccd5",
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": [
+                    {
+                        "entityType": "Host",
+                        "fieldMappings": [
+                            {
+                                "identifier": "FullName",
+                                "columnName": "HostCustomEntity"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9b7df89a-7812-4586-8bf1-34af43d84830')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9b7df89a-7812-4586-8bf1-34af43d84830')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "displayName": "AppServices AV Scan with Infected Files",
+                "description": "Identifies if an AV scan finds infected files in Azure App Services.",
+                "severity": "Informational",
+                "enabled": true,
+                "query": "let timeframe = ago(1d);\nAppServiceAntivirusScanAuditLogs\n| where NumberOfInfectedFiles > 0\n| extend HostCustomEntity = _ResourceId, timestamp = TimeGenerated",
+                "queryFrequency": "PT10M",
+                "queryPeriod": "PT30M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 1,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [],
+                "techniques": [],
+                "alertRuleTemplateName": "9d0295ee-cb75-4f2c-9952-e5acfbb67036",
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": [
+                    {
+                        "entityType": "Host",
+                        "fieldMappings": [
+                            {
+                                "identifier": "FullName",
+                                "columnName": "HostCustomEntity"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/84015518-f112-4200-937d-40e2351e6ce0')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/84015518-f112-4200-937d-40e2351e6ce0')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "displayName": "Data Connector failure",
+                "description": "Query uses the SentinelHealth table to look for any resource which has a status that is not equal to \"Success\"",
+                "severity": "Informational",
+                "enabled": true,
+                "query": "SentinelHealth \r\n| where Status <> \"Success\"",
+                "queryFrequency": "P1D",
+                "queryPeriod": "P1D",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [],
+                "techniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": true,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": [
+                    {
+                        "entityType": "AzureResource",
+                        "fieldMappings": [
+                            {
+                                "identifier": "ResourceId",
+                                "columnName": "SentinelResourceId"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "CloudApplication",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Name",
+                                "columnName": "SentinelResourceName"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/00bf4797-ddb8-4f4f-a21e-2b2a96eeb97a')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/00bf4797-ddb8-4f4f-a21e-2b2a96eeb97a')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "displayName": "Potential malicious event",
+                "description": "This incident has been generated from the query used from the Sentinel overview page where potential malicious events are plotted unto a map.",
+                "severity": "Informational",
+                "enabled": true,
+                "query": "union isfuzzy=true\n    (W3CIISLog\n    | extend TrafficDirection = \"InboundOrUnknown\", Country=RemoteIPCountry, Latitude=RemoteIPLatitude, Longitude=RemoteIPLongitude),\n    (DnsEvents\n    | extend TrafficDirection = \"InboundOrUnknown\", Country= RemoteIPCountry, Latitude = RemoteIPLatitude, Longitude = RemoteIPLongitude),\n    (WireData\n    | extend TrafficDirection = iff(Direction != \"Outbound\", \"InboundOrUnknown\", \"Outbound\"), Country=RemoteIPCountry, Latitude=RemoteIPLatitude, Longitude=RemoteIPLongitude),\n    (WindowsFirewall\n    | extend TrafficDirection = iff(CommunicationDirection != \"SEND\", \"InboundOrUnknown\", \"Outbound\"), Country=MaliciousIPCountry, Latitude=MaliciousIPLatitude, Longitude=MaliciousIPLongitude),\n    (CommonSecurityLog\n    | extend TrafficDirection = iff(CommunicationDirection != \"Outbound\", \"InboundOrUnknown\", \"Outbound\"), Country=MaliciousIPCountry, Latitude=MaliciousIPLatitude, Longitude=MaliciousIPLongitude, Confidence=ThreatDescription, Description=ThreatDescription),\n    (VMConnection\n    | where Type == \"VMConnection\"\n    | extend TrafficDirection = iff(Direction != \"outbound\", \"InboundOrUnknown\", \"Outbound\"), Country=RemoteCountry, Latitude=RemoteLatitude, Longitude=RemoteLongitude)\n| where isnotempty(MaliciousIP) and isnotempty(Country) and isnotempty(Latitude) and isnotempty(Longitude)\n",
+                "queryFrequency": "PT5H",
+                "queryPeriod": "PT5H",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [
+                    "CommandAndControl",
+                    "InitialAccess"
+                ],
+                "techniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": true,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": [
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "SourceIP"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "URL",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Url",
+                                "columnName": "MaliciousIP"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9159a604-2dc7-4fe1-af1d-b52841f6607c')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9159a604-2dc7-4fe1-af1d-b52841f6607c')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "displayName": "Sentinel Playbook Failure",
+                "description": "Query for status of \"Failed\" for all logic apps",
+                "severity": "Informational",
+                "enabled": true,
+                "query": "AzureActivity\r\n| where ResourceProviderValue == \"Microsoft.Logic\"\r\n| where ActivityStatus == \"Failed\" or ActivityStatusValue == \"Failed\"\r\n| extend ErrorMessage = tostring(parse_json(tostring(parse_json(tostring(parse_json(Properties).statusMessage)).error)).message)\r\n| project Resource, ResourceGroup, Caller, CallerIpAddress, ActivityStatus, ErrorMessage, ActivitySubstatus\r\n",
+                "queryFrequency": "PT1H",
+                "queryPeriod": "PT1H",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [],
+                "techniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": null,
+                "sentinelEntitiesMappings": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/84015518-f112-4200-937d-40e2351e6ce0/actions/d26469f77f324f53876951d4f8bf4a0c')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/84015518-f112-4200-937d-40e2351e6ce0/d26469f77f324f53876951d4f8bf4a0c')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules/actions",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "ruleId": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/84015518-f112-4200-937d-40e2351e6ce0')]",
+                "triggerUri": "[listCallbackURL(concat('/subscriptions/a1a21640-263b-45e1-9ad1-be5b4e1eb6ad/resourceGroups/5Q-RG-Playbooks/providers/Microsoft.Logic/workflows/5QC.NotifyDataConnectorFail','/triggers/Microsoft_Sentinel_alert'),'2016-06-01').value]",
+                "logicAppResourceId": "/subscriptions/a1a21640-263b-45e1-9ad1-be5b4e1eb6ad/resourceGroups/5Q-RG-Playbooks/providers/Microsoft.Logic/workflows/5QC.NotifyDataConnectorFail",
+                "operatesOn": "Alert"
+            },
+            "dependsOn": [
+                "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/84015518-f112-4200-937d-40e2351e6ce0')]"
+            ]
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9159a604-2dc7-4fe1-af1d-b52841f6607c/actions/d26469f77f324f53876951d4f8bf4a0c')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9159a604-2dc7-4fe1-af1d-b52841f6607c/d26469f77f324f53876951d4f8bf4a0c')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules/actions",
+            "apiVersion": "2021-10-01-preview",
+            "properties": {
+                "ruleId": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9159a604-2dc7-4fe1-af1d-b52841f6607c')]",
+                "triggerUri": "[listCallbackURL(concat('/subscriptions/a1a21640-263b-45e1-9ad1-be5b4e1eb6ad/resourceGroups/5Q-RG-Playbooks/providers/Microsoft.Logic/workflows/5QC.NotifyDataConnectorFail','/triggers/Microsoft_Sentinel_alert'),'2016-06-01').value]",
+                "logicAppResourceId": "/subscriptions/a1a21640-263b-45e1-9ad1-be5b4e1eb6ad/resourceGroups/5Q-RG-Playbooks/providers/Microsoft.Logic/workflows/5QC.NotifyDataConnectorFail",
+                "operatesOn": "Alert"
+            },
+            "dependsOn": [
+                "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9159a604-2dc7-4fe1-af1d-b52841f6607c')]"
+            ]
+        }
+    ]
+}
