@@ -2,14 +2,27 @@
 
 ## Instructions
 
-1. Copy the '5Q templates.zip' directory to a local location. 
-2. Ensure the contents of all files in the directory are as expected
-3. Zip the directory
-4. Drag & Drop it into the new client's Azure Cloud Shell
-5. Extract the directory within cloudshell (unzip "5Q Templates.zip")
-6. Connect to Azure Active Directory before deploying (Connect-AzureAD)
-7. Execute the powershell shell script (.\deployLighthouse.ps1)
-8. Log out and back into your 5Q Azure account once a deploy was successful to add the subscription to your "view"
+
+1. Get Contents of "5Q templates.zip" onto the customer's tenant
+   - Download/clone the entire repository, then manually drag and drop this zip
+   - use command line
+   ```powershell 
+   iwr https://github.com/5Q-SOCaaS/CentryOnboarding/raw/main/AzureLighthouse/5QTemplates.zip
+   ```
+   or
+   ```bash
+   wget https://github.com/5Q-SOCaaS/CentryOnboarding/raw/main/AzureLighthouse/5QTemplates.zip
+   ```
+2. Unzip and inspect the file
+   - Does the template file have the correct TenantId? Lighthouse groupId? (The answer should be yes)
+3. Now to execute the following commands to initiate the lighthouse deployment (via cloud shell)
+   ```powershell
+   Connect-AzureAD
+   .\deployLighthouse.ps1 -V   
+   ```
+4. Upon successful completion, log out of your 5Q account and back in
+5. Go to the azure portal settings and enable the new directory in the 'Directories + Subscriptions' tab
+6. Return to main instructions to be begin deploying Sentinel
 
 ---
 
@@ -19,4 +32,5 @@
 
 # Deploy
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FJakeD-5Q%2FSentinel-Onboarding%2Fmain%2FAzure%2520Lighthouse%2Flighthouse.template.json)
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)]()
