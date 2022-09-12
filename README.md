@@ -5,7 +5,7 @@ Files and documentation related to client onboarding
 
 ## Microsoft Sentinel workspace setup
 
-1. Deploy lighthouse using zip file and follow [instructions](https://github.com/5Q-SOCaaS/CentryOnboarding/blob/main/AzureLighthouse/README.md)
+1. Deploy lighthouse using [zip file](https://github.com/5Q-SOCaaS/CentryOnboarding/raw/main/AzureLighthouse/5QTemplates.zip) and follow [instructions](https://github.com/5Q-SOCaaS/CentryOnboarding/blob/main/AzureLighthouse/README.md)
 
 2. Use the button below to accomplish the following tasks:
      - [ ] Create a Sentinel resource group (**Naming convention:** RG-*ABR*-Sentinel)
@@ -25,9 +25,9 @@ Files and documentation related to client onboarding
 
 Upon completing the initial deployment, we must add all content and connect data sources.
 
-- [ ] Connect Azure Activity logs from the Log Analytics Workspace blade
-- [ ] Turn on UEBA from the Sentinel Settings (must be global or security admin)
-- [ ] Give permissions to the resource groups that hold Sentinel Playbooks
+
+- [x] Turn on UEBA from the Sentinel Settings (must be global or security admin)
+- [x] Give permissions to the resource groups that hold Sentinel Playbooks
 
 ### Data connectors
 
@@ -35,17 +35,17 @@ I find it useful to add the data connectors that you can using the Solutions (co
 
 Install the solution/Enable the Data connector for the following sources
 
-- [ ] Azure Active Directory
+- [x] Azure Active Directory
   - [ ] *Check all available logs to be ingested*
 
-- [ ] Azure Active Directory Identity Protection
+- [x] Azure Active Directory Identity Protection
 
-- [ ] Azure Activity
-  - [ ] *Create a remediation task*, follow the wizard's steps
+- [x] Azure Activity
+  
 
-- [ ] Azure Information Protection
+- [x] Azure Information Protection
 
-- [ ] Microsoft Defender 365
+- [x] Microsoft Defender 365
   - [ ] Enable the log collection and table creation for all items listed  
   - [ ] *In the [Defender console](https://security.microsoft.com/homepage), enable the 'Advanced Features'*
 
@@ -69,6 +69,13 @@ Install the solution/Enable the Data connector for the following sources
 Settings (Top right of page) > Security Extentions | On the page, SIEM Agents > Add SIEM agent 
 - [ ] Office 365
   - [ ] *Check Exchange, SharePoint, and Teams*
+
+
+#### Connector Review
+
+After checklist completion, review the connector pages for the ingestion status; ensure that there are logs being collected for each connector. Note: Some connectors may take longer than other to begin ingestion logs. If logs are being ingested but some tables are missing, further investigation may be necessary. 
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

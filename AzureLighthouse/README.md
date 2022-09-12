@@ -2,6 +2,8 @@
 
 ## Instructions
 
+**MUST BE SIGNED INTO THE CUSTOMER'S TENANT, USING AN ACCOUNT WITH ADMIN PRIVILEGES!!!**
+
 
 1. Get Contents of "5Q templates.zip" onto the customer's tenant
    - Download/clone the entire repository, then manually drag and drop this zip
@@ -26,11 +28,3 @@
 
 ---
 
-## Links
-
-[Documentation](https://docs.microsoft.com/en-us/azure/lighthouse/)
-
-# Deploy
-
-
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)]()
