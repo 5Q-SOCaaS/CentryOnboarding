@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "value": "5Q-AllNOneSentinel-test" 
+        },
+        "pricingTier": {
+            "value": "PerGB2018"
+        },
+        "dailyQuota": {
+            "value": 0 
+        },
+        "dataRetention": {
+            "value": 30
+        },
+        "immediatePurgeDataOn30Days": {
+            "value": true
+        },
+        "location": {
+            "value": "eastus" 
+        }
+    }
+}

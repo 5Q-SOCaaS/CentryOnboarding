@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dataConnectorsKind": {
+            "value": []
+        },
+        "workspaceName": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "securityCollectionTier": {
+            "value": "Recommended"
+        },
+        "tenantId": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "subscriptionId": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "mcasDiscoveryLogs": {
+            "value": false // TODO: Fill in parameter value
+        },
+        "location": {
+            "value": "" // TODO: Fill in parameter value
+        }
+    }
+}

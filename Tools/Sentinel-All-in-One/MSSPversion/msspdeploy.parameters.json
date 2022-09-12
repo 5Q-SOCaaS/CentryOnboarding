@@ -1,0 +1,79 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mspOfferName": {
+            "value": "5Q"
+        },
+        "mspOfferDescription": {
+            "value": "5Q SOC Services"
+        },
+        "managedByTenantId": {
+            "value": "f1a966c9-8958-4e13-bc44-f54c47cdbf9a"
+        },
+        "authorizations": {
+            "value": [
+                {
+                    "principalId": "3ef88c62-fff0-4fa1-a969-308fe9264ca6",
+                    "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                    "principalIdDisplayName": "5Q Lighthouse Group"
+                },
+                {
+                    "principalId": "24edba3b-bb7e-49b1-8dc3-9ad28d602a7b",
+                    "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+                    "principalIdDisplayName": "Azure Sentinel Automation Contributors"
+                }
+            ]
+        },
+        "rgName": {
+            "value": "RG-SentinelAllinOne" 
+        },
+        "location": {
+            "value": "centralus" 
+        },
+        "workspaceName": {
+            "value": "AllinOne-LogAnalytics-Sentinel" 
+        },
+        "pricingTier": {
+            "value": "PerGB2018"
+        },
+        "dailyQuota": {
+            "value": 0 
+        },
+        "dataRetention": {
+            "value": 30
+        },
+        "immediatePurgeDataOn30Days": {
+            "value": true
+        },
+        "securityCollectionTier": {
+            "value": "Recommended"
+        },
+        "enableDataConnectorsKind": {
+            "value": [ 
+                "AzureActivityLog",
+                "SecurityInsightsSecurityEventCollectionConfiguration",
+                "WindowsFirewall",
+                "DnsAnalytics"
+            ]
+        },
+        "enableFusionAlert": {
+            "value": true
+        },
+        "enableMicrosoftAlerts": {
+            "value": true
+        },
+        "enableMLAlerts": {
+            "value": true
+        },
+        "enableScheduledAlerts": {
+            "value": true
+        },
+        "mcasDiscoveryLogs": {
+            "value": true
+        },
+        "_artifactsLocation": {
+            "value": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Tools/"
+        }
+    }
+}

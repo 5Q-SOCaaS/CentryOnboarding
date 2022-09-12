@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dataConnectorsKind": {
+            "value": [
+                "AzureSecurityCenter",
+                "Office365",
+                "MicrosoftCloudAppSecurity",
+                "AzureAdvancedThreatProtection",
+                "ThreatIntelligence",
+                "MicrosoftDefenderAdvancedThreatProtection",
+                "AzureActiveDirectory",
+                "AzureActiveDirectoryDiagnostics"
+            ]
+        },
+        "workspaceName": {
+            "value": "5Q-AllNOneSentinel-test"
+        },
+        "securityCollectionTier": {
+            "value": "Recommended"
+        },
+        "tenantId": {
+            "value": "f1a966c9-8958-4e13-bc44-f54c47cdbf9a" 
+        },
+        "subscriptionId": {
+            "value": "a1a21640-263b-45e1-9ad1-be5b4e1eb6ad"
+        },
+        "mcasDiscoveryLogs": {
+            "value": true
+        },
+        "location": {
+            "value": "centralus"
+        }
+    }
+}

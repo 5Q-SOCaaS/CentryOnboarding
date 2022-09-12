@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "workspaceName": {
+            "value": "<Enter Log Analytics Workspace name>"
+        },
+        "dataConnectorsKind": {
+            "value": []
+        },
+        "ruleGuid": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "enableFusionAlert": {
+            "value": false
+        },
+        "enableMicrosoftAlerts": {
+            "value": false
+        },
+        "enableMLAlerts": {
+            "value": false
+        }
+    }
+}
